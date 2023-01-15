@@ -11,6 +11,24 @@
                   <h1 class="admin-heading">Add New Category</h1>
               </div>
               <div class="col-md-offset-3 col-md-6">
+                <?php
+                if(isset($_POST['save'])){
+
+                    include "config.php";
+                    $category=mysqli_real_escape_string($conn,$_POST['cat']);
+
+                    $sql="INSERT INTO category(category_name)VALUES('{$category}')";
+                     
+                    
+
+                    if(mysqli_query($conn,$sql)){
+                       header("Location: http://localhost/testNews/admin/category.php");
+                    }
+
+                }
+                
+
+                ?>
                   <!-- Form Start -->
                   <form action="" method="POST" autocomplete="off">
                       <div class="form-group">
@@ -20,6 +38,7 @@
                       <input type="submit" name="save" class="btn btn-primary" value="Save" required />
                   </form>
                   <!-- /Form End -->
+                 
               </div>
           </div>
       </div>
